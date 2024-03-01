@@ -14,7 +14,7 @@ new FormModel {
 			"$locationPolicy": 1
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 				"$columnSpecs": "0, 0, 0"
-				"$rowSpecs": "0"
+				"$rowSpecs": "0, 0, 0, 0, 0"
 				"$hGap": 5
 				"$vGap": 5
 				"$alignTop": true
@@ -24,6 +24,7 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "TextFieldLabel"
 					"text": "Database:"
+					"labelFor": new FormReference( "FileNameTextField" )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "FileNameTextField"
@@ -36,8 +37,42 @@ new FormModel {
 					"text": "Open"
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 					"gridx": 2
-					"hAlign": 4
-					"vAlign": 0
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "comboLabel"
+					"text": "Table:"
+					"labelFor": new FormReference( "TablesComboBox" )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 1
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "TablesComboBox"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 1
+					"gridx": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "querylabel"
+					"text": "Query:"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 2
+					"vAlign": 1
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "ExecuteQueryButton"
+					"text": "Execute"
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 3
+					"gridx": 2
+				} )
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "QueryTextArea"
+					"minimumSize": new java.awt.Dimension( 5, 66 )
+					"preferredSize": new java.awt.Dimension( 5, 66 )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+					"gridy": 2
+					"gridx": 1
+					"weighty": 2.0
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "North"
