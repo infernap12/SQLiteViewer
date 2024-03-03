@@ -12,74 +12,121 @@ new FormModel {
 			"minimumSize": new java.awt.Dimension( 800, 500 )
 			"visible": true
 			"$locationPolicy": 1
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-				"$columnSpecs": "0, 0, 0"
-				"$rowSpecs": "0, 0, 0, 0, 0"
-				"$hGap": 5
-				"$vGap": 5
-				"$alignTop": true
-				"$alignLeft": true
-			} ) {
-				name: "topPanel"
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "TextFieldLabel"
-					"text": "Database:"
-					"labelFor": new FormReference( "FileNameTextField" )
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
-				add( new FormComponent( "javax.swing.JTextField" ) {
-					name: "FileNameTextField"
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-					"gridx": 1
-					"weightx": 2.0
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "MainPanel"
+				"border": new javax.swing.border.EmptyBorder( 5, 5, 5, 5 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+					"$columnSpecs": "0, 0, 0"
+					"$rowSpecs": "0, 0, 0, 0, 0"
+					"$hGap": 5
+					"$vGap": 5
+					"$alignTop": true
+					"$alignLeft": true
+				} ) {
+					name: "topPanel"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "TextFieldLabel"
+						"text": "Database:"
+						"labelFor": new FormReference( "FileNameTextField" )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "FileNameTextField"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+						"weightx": 2.0
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "OpenFileButton"
+						"text": "Open"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "OpenFile", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "comboLabel"
+						"text": "Table:"
+						"labelFor": new FormReference( "TablesComboBox" )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 1
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "TablesComboBox"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "Tables", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 1
+						"gridx": 1
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "querylabel"
+						"text": "Query:"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 2
+						"vAlign": 1
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "ExecuteQueryButton"
+						"text": "Execute"
+						"enabled": false
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ExecuteQuery", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 3
+						"gridx": 2
+					} )
+					add( new FormComponent( "javax.swing.JTextArea" ) {
+						name: "QueryTextArea"
+						"minimumSize": new java.awt.Dimension( 5, 66 )
+						"preferredSize": new java.awt.Dimension( 5, 66 )
+						"enabled": false
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 2
+						"gridx": 1
+						"weighty": 2.0
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "North"
 				} )
-				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "OpenFileButton"
-					"text": "Open"
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-					"gridx": 2
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "comboLabel"
-					"text": "Table:"
-					"labelFor": new FormReference( "TablesComboBox" )
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-					"gridy": 1
-				} )
-				add( new FormComponent( "javax.swing.JComboBox" ) {
-					name: "TablesComboBox"
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-					"gridy": 1
-					"gridx": 1
-				} )
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "querylabel"
-					"text": "Query:"
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-					"gridy": 2
-					"vAlign": 1
-				} )
-				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "ExecuteQueryButton"
-					"text": "Execute"
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-					"gridy": 3
-					"gridx": 2
-				} )
-				add( new FormComponent( "javax.swing.JTextArea" ) {
-					name: "QueryTextArea"
-					"minimumSize": new java.awt.Dimension( 5, 66 )
-					"preferredSize": new java.awt.Dimension( 5, 66 )
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-					"gridy": 2
-					"gridx": 1
-					"weighty": 2.0
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					"border": new javax.swing.border.TitledBorder( "Results" )
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "Table"
+						"autoCreateRowSorter": true
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+							add( new java.util.Vector {
+								add( "asdas" )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+							} )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+						} )
+						auxiliary() {
+							"model.noCode": true
+						}
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
-				"value": "North"
+				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"size": new java.awt.Dimension( 595, 420 )
 		} )
 	}
 }
